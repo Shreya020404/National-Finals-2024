@@ -9,14 +9,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://chainauth.xyz"), // Update to your domain
   title: {
-    default: "ChainAuth - Decentralized Authentication",
+    default: "ChainAuth - Authentication",
     template: `%s | ChainAuth`,
   },
   description:
-    "ChainAuth offers a decentralized authentication framework that eliminates the need for passwords, enhancing security and user control.",
+    "ChainAuth offers a authentication framework that eliminates the need for passwords, enhancing security and user control.",
   openGraph: {
     description:
-      "ChainAuth provides a decentralized solution for secure identity management without passwords.",
+      "ChainAuth provides a  solution for secure identity management without passwords.",
     images: [
       "https://yourimageurl.com/image.png", // Update with your image URL
     ],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ChainAuth - Decentralized Authentication",
+    title: "ChainAuth -  Authentication",
     description:
       "Enhancing security and user control with a passwordless authentication solution.",
     creator: "@yourtwitterhandle", // Update with your Twitter handle

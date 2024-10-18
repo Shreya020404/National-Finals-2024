@@ -12,17 +12,31 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { logout } from "@/utils/icpAuthClient"; // Import your logout function
+import { getIdentity, initAuthClient } from "../../../utils/icpAuthClient"; // Adjust the path as needed
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import router from "next/router";
 
 export default function DashboardSideBar() {
+  const [identity, setIdentity] = useState<string | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
+
+  useEffect(() => {
+    const fetchIdentity = async () => {
+      const userIdentity = await getIdentity();
+      setIdentity(userIdentity);
+    };
+
+    fetchIdentity();
+  }, []);
 
   const handleLogout = async () => {
-    await logout();
-    router.push("/"); // Redirect to the home page or login page after logout
+    const client = await initAuthClient();
+    await client.logout(); // Call logout method on the AuthClient
+    router.push("/"); // Redirect to the home page after logging out
   };
+
+
 
   return (
     <div className="lg:block hidden border-r h-full bg-gray-50 dark:bg-gray-900">

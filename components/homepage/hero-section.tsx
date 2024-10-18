@@ -14,11 +14,10 @@ export default function HeroSection() {
       <h1
         className={`${TITLE_TAILWIND_CLASS} scroll-m-20 font-semibold tracking-tight text-center max-w-[1120px] bg-gradient-to-b dark:text-white`}
       >
-        ChainAuth: Decentralized Authentication Made Easy
+        ChainAuth: Data Made Easy
       </h1>
       <p className="mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
-        The ultimate framework for building secure, passwordless authentication
-        systems, giving users full control over their digital identities.
+        The ultimate platform for managing your data, securely and efficiently.
       </p>
       <div className="flex justify-center items-center gap-3">
         <Link href="/sign-up" className="mt-5">
@@ -39,7 +38,7 @@ export default function HeroSection() {
           </Button>
         </Link>
         <Link
-          href="https://github.com/your-repo-link" // Update with your GitHub repository link
+          href="https://github.com/Shreya020404/National-Finals-2024" // Update with your GitHub repository link
           target="_blank"
           className="animate-buttonheartbeat border p-2 rounded-full mt-5 hover:dark:bg-black hover:cursor-pointer"
           aria-label="View ChainAuth Repository on GitHub"

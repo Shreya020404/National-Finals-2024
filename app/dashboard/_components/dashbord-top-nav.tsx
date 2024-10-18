@@ -13,16 +13,27 @@ import {
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Banknote, Folder, HomeIcon, Settings, LogOut } from "lucide-react";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { logout } from "../../../utils/icpAuthClient"; // Adjust the path as necessary
+import { getIdentity, initAuthClient } from "../../../utils/icpAuthClient"; // Adjust the path as needed
 
 export default function DashboardTopNav({ children }: { children: ReactNode }) {
+    const [identity, setIdentity] = useState<string | null>(null);
   const router = useRouter();
 
+  useEffect(() => {
+    const fetchIdentity = async () => {
+      const userIdentity = await getIdentity();
+      setIdentity(userIdentity);
+    };
+
+    fetchIdentity();
+  }, []);
+
   const handleLogout = async () => {
-    await logout(); // Call the logout function
-    router.push("/sign-in"); // Redirect to the login page
+    const client = await initAuthClient();
+    await client.logout(); // Call logout method on the AuthClient
+    router.push("/"); // Redirect to the home page after logging out
   };
 
   return (
