@@ -16,17 +16,75 @@ const mockSocialMediaReports: SocialMediaReport[] = [
   {
     id: "1",
     platform: "Instagram",
-    dataUsage: "Used for ad targeting and content recommendation.",
+    dataUsage:
+      "Used for ad targeting, content recommendation, and user engagement analytics.",
     lastLogin: new Date().toISOString(),
   },
   {
     id: "2",
     platform: "Facebook",
     dataUsage:
-      "Data utilized for creating personalized ads and friend suggestions.",
+      "Data utilized for creating personalized ads, friend suggestions, and community insights.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "3",
+    platform: "Twitter",
+    dataUsage:
+      "Used for trend analysis, sentiment tracking, and ad performance metrics.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "4",
+    platform: "LinkedIn",
+    dataUsage:
+      "Data used for professional networking, job recommendations, and targeted advertising.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    platform: "TikTok",
+    dataUsage:
+      "Used for content discovery, ad targeting, and user engagement metrics.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    platform: "Snapchat",
+    dataUsage:
+      "Data used for ad targeting, user demographics, and engagement analytics.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "7",
+    platform: "Pinterest",
+    dataUsage:
+      "Used for visual discovery, ad targeting, and user interest profiling.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    platform: "Reddit",
+    dataUsage:
+      "Data utilized for community insights, ad targeting, and user behavior analysis.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "9",
+    platform: "YouTube",
+    dataUsage:
+      "Used for video performance analytics, content recommendations, and targeted ads.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "10",
+    platform: "WhatsApp",
+    dataUsage:
+      "Used for user engagement metrics and customer service interactions.",
     lastLogin: new Date().toISOString(),
   },
 ];
+
 
 export default function SocialMediaReports() {
   const [reports, setReports] = useState<SocialMediaReport[]>(

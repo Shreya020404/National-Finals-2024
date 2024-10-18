@@ -16,13 +16,71 @@ const mockEcommerceReports: EcommerceReport[] = [
   {
     id: "1",
     platform: "Amazon",
-    dataUsage: "Used for personalized marketing and promotional campaigns.",
+    dataUsage:
+      "Used for personalized marketing, product recommendations, and customer insights.",
     lastLogin: new Date().toISOString(),
   },
   {
     id: "2",
     platform: "eBay",
-    dataUsage: "Data shared for targeted ads and product recommendations.",
+    dataUsage:
+      "Data shared for targeted ads, product recommendations, and sales analytics.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "3",
+    platform: "Shopify",
+    dataUsage:
+      "Used for managing online stores, sales data, and customer engagement.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "4",
+    platform: "Etsy",
+    dataUsage:
+      "Data used for promoting handmade and vintage products and customer insights.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    platform: "Walmart",
+    dataUsage:
+      "Used for inventory management, customer insights, and promotional campaigns.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    platform: "Alibaba",
+    dataUsage:
+      "Data shared for B2B transactions, supplier recommendations, and market trends.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "7",
+    platform: "Best Buy",
+    dataUsage:
+      "Used for sales tracking, product recommendations, and customer feedback.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    platform: "Target",
+    dataUsage:
+      "Data used for customer loyalty programs, promotions, and inventory management.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "9",
+    platform: "Newegg",
+    dataUsage:
+      "Used for tracking electronics sales, product recommendations, and customer reviews.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "10",
+    platform: "Rakuten",
+    dataUsage:
+      "Data used for cash-back offers, product recommendations, and sales analytics.",
     lastLogin: new Date().toISOString(),
   },
 ];

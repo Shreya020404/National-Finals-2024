@@ -17,16 +17,73 @@ const mockRealEstateReports: RealEstateReport[] = [
     id: "1",
     platform: "Zillow",
     dataUsage:
-      "Used to recommend properties and improve user search experience.",
+      "Used to recommend properties, analyze market trends, and improve user search experience.",
     lastLogin: new Date().toISOString(),
   },
   {
     id: "2",
     platform: "RealtyTrac",
-    dataUsage: "Data used for property valuation and historical records.",
+    dataUsage:
+      "Data used for property valuation, historical records, and foreclosure listings.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "3",
+    platform: "Realtor.com",
+    dataUsage:
+      "Used to list properties, provide market insights, and enhance user experience.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "4",
+    platform: "Redfin",
+    dataUsage:
+      "Data used for home sales analytics, property recommendations, and agent performance tracking.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    platform: "Trulia",
+    dataUsage:
+      "Used for property listings, neighborhood insights, and user reviews.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    platform: "LoopNet",
+    dataUsage:
+      "Data used for commercial real estate listings and market analysis.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "7",
+    platform: "Movoto",
+    dataUsage:
+      "Used for residential property listings and market trend analysis.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    platform: "Opendoor",
+    dataUsage: "Used for instant home buying, selling, and pricing analytics.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "9",
+    platform: "PropertyNest",
+    dataUsage:
+      "Used to track real estate listings, market data, and user engagement.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "10",
+    platform: "Compass",
+    dataUsage:
+      "Data used for luxury property listings and personalized real estate services.",
     lastLogin: new Date().toISOString(),
   },
 ];
+
 
 export default function RealEstateReports() {
   const [reports, setReports] = useState<RealEstateReport[]>(

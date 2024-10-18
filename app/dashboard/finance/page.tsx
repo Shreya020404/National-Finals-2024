@@ -1,142 +1,194 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import jsPDF from "jspdf";
 
-// Form validation schema using zod
-const FormSchema = z.object({
-  category: z.string(),
-  financialPlatform: z.string().min(1, "Please select a financial platform"),
-  description: z.string().min(1, "Description is required"),
-});
+// Example healthcare report interface
+interface FinanceReport {
+  id: string;
+  platform: string;
+  dataUsage: string;
+  lastLogin: string;
+}
 
-export default function Category() {
+// Mock data for the healthcare platforms
+const mockFinanceReports: FinanceReport[] = [
+  {
+    id: "1",
+    platform: "Paypal",
+    dataUsage: "Used for financial history, transactions, and credit history.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "2",
+    platform: "Stripe",
+    dataUsage: "Used for processing payments and managing online transactions.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "3",
+    platform: "Square",
+    dataUsage: "Used for point of sale transactions and sales analytics.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "4",
+    platform: "Venmo",
+    dataUsage: "Used for peer-to-peer payments and transaction history.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    platform: "QuickBooks",
+    dataUsage: "Used for accounting, invoicing, and financial reporting.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    platform: "Mint",
+    dataUsage: "Used for budgeting, expense tracking, and financial planning.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "7",
+    platform: "Zelle",
+    dataUsage: "Used for fast money transfers between bank accounts.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    platform: "Robinhood",
+    dataUsage: "Used for stock trading and portfolio management.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "9",
+    platform: "Coinbase",
+    dataUsage: "Used for buying, selling, and managing cryptocurrency.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "10",
+    platform: "Plaid",
+    dataUsage:
+      "Used for connecting bank accounts to apps for transaction data.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "11",
+    platform: "Chime",
+    dataUsage: "Used for banking services and mobile payments.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "12",
+    platform: "Cash App",
+    dataUsage: "Used for peer-to-peer payments and investing.",
+    lastLogin: new Date().toISOString(),
+  },
+];
+
+
+export default function HealthcareReports() {
+  const [reports, setReports] = useState<FinanceReport[]>(
+    mockFinanceReports
+  );
   const [loading, setLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      category: "",
-      financialPlatform: "",
-      description: "",
-    },
-  });
+  const [error, setError] = useState<string | null>(null);
+  const [selectedReport, setSelectedReport] = useState<string | null>(null); // Track selected platform
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  useEffect(() => {
     setLoading(true);
-    try {
-      console.log("Form Data:", data);
-      // Perform your submission logic here (e.g., API call)
-      form.reset();
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setLoading(false);
-    }
-  }
+    const fetchReports = async () => {
+      try {
+        // Simulate API call
+        setTimeout(() => {
+          setReports(mockFinanceReports);
+          setLoading(false);
+        }, 1000);
+      } catch (err) {
+        setError("Failed to fetch reports");
+        setLoading(false);
+      }
+    };
+
+    fetchReports();
+  }, []);
+
+  const downloadPDF = (report: FinanceReport) => {
+    const doc = new jsPDF();
+    doc.text(report.platform, 10, 10);
+    doc.text(report.dataUsage, 10, 20);
+    doc.text(
+      `Last Login: ${new Date(report.lastLogin).toLocaleDateString()}`,
+      10,
+      30
+    );
+    doc.save(`${report.platform}-report.pdf`);
+  };
+
+  if (loading) return <p>Loading reports...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <main className="flex min-w-screen p-4 flex-col items-center justify-between">
       <div className="flex flex-col mb-[5rem] w-full">
-        <h1 className="text-3xl font-semibold tracking-tight">
-          Financial Data Report
+        <h1 className="text-3xl font-semibold tracking-tight mb-6">
+          Financial Data Reports
         </h1>
-        <p className="leading-7 text-sm dark:text-gray-400">
-          Below, you can track where your financial data has been used, such as
-          websites or apps you&apos;ve logged into, or banks that have accessed
-          your data.
+        <p className="leading-7 text-sm dark:text-gray-400 mb-6">
+          Below are the Financial platforms where you have logged in. Click on
+          any platform to see how your data is being used.
         </p>
 
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="max-w-[600px] space-y-3 mt-[1rem]"
-          >
-            <FormField
-              control={form.control}
-              name="category"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel htmlFor={field.name}>
-                    Enter random piece of information
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      id={field.name}
-                      placeholder="Type any random info"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
+          {reports.length > 0 ? (
+            reports.map((report) => (
+              <div
+                key={report.id}
+                className={`border p-4 rounded-md shadow-md transition-all ${
+                  selectedReport === report.id
+                    ? "bg-gray-100 dark:bg-gray-800"
+                    : "bg-white dark:bg-gray-900"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-bold">{report.platform}</h2>
+                  <Button
+                    variant="link"
+                    onClick={() =>
+                      setSelectedReport(
+                        selectedReport === report.id ? null : report.id
+                      )
+                    }
+                  >
+                    {selectedReport === report.id
+                      ? "Hide Details"
+                      : "View Details"}
+                  </Button>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Last Login: {new Date(report.lastLogin).toLocaleDateString()}
+                </p>
 
-            {/* Financial Platform Selection */}
-            <FormField
-              control={form.control}
-              name="financialPlatform"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel htmlFor={field.name}>
-                    Select Financial Platform
-                  </FormLabel>
-                  <FormControl>
-                    <select
-                      {...field}
-                      id={field.name}
-                      className="w-full border border-gray-300 rounded-md p-2"
+                {/* Show details when the platform is clicked */}
+                {selectedReport === report.id && (
+                  <div className="mt-4">
+                    <p className="text-sm">{report.dataUsage}</p>
+                    <Button
+                      className="mt-2 w-full"
+                      onClick={() => downloadPDF(report)}
                     >
-                      <option value="" disabled>
-                        Select a platform
-                      </option>
-                      <option value="Bank of America">Bank of America</option>
-                      <option value="Chase Bank">Chase Bank</option>
-                      <option value="PayPal">PayPal</option>
-                      <option value="Venmo">Venmo</option>
-                      <option value="Mint">Mint</option>
-                      <option value="Robinhood">Robinhood</option>
-                    </select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Description Field */}
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel htmlFor={field.name}>Enter Description</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      id={field.name}
-                      placeholder="Briefly describe the data usage or action taken"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button type="submit" disabled={loading}>
-              {loading ? "Submitting..." : "Submit"}
-            </Button>
-          </form>
-        </Form>
+                      Download PDF
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <p>No reports found.</p>
+          )}
+        </div>
       </div>
     </main>
   );

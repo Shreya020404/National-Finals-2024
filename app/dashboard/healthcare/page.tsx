@@ -17,17 +17,73 @@ const mockHealthcareReports: HealthcareReport[] = [
     id: "1",
     platform: "MyChart",
     dataUsage:
-      "Used for managing appointments, prescriptions, and medical history.",
+      "Used for managing appointments, prescriptions, and accessing medical history.",
     lastLogin: new Date().toISOString(),
   },
   {
     id: "2",
     platform: "Fitbit",
     dataUsage:
-      "Data used to track health metrics like heart rate, steps, and sleep patterns.",
+      "Data used to track health metrics such as heart rate, steps, sleep patterns, and activity levels.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "3",
+    platform: "Apple Health",
+    dataUsage:
+      "Aggregates health data from various sources to monitor fitness, nutrition, and wellness.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "4",
+    platform: "Google Fit",
+    dataUsage:
+      "Used for tracking physical activity, workouts, and health goals.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    platform: "HealthKit",
+    dataUsage:
+      "Used for collecting and sharing health-related data between apps and devices.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    platform: "Zocdoc",
+    dataUsage:
+      "Used for finding healthcare providers, scheduling appointments, and managing medical records.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "7",
+    platform: "Headspace",
+    dataUsage:
+      "Data used for mental health tracking, meditation practices, and wellness routines.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    platform: "Noom",
+    dataUsage:
+      "Used for weight management, nutrition tracking, and health coaching.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "9",
+    platform: "Telehealth Services",
+    dataUsage:
+      "Used for virtual consultations, appointment management, and remote patient monitoring.",
+    lastLogin: new Date().toISOString(),
+  },
+  {
+    id: "10",
+    platform: "MyFitnessPal",
+    dataUsage: "Data used for tracking diet, exercise, and nutrition goals.",
     lastLogin: new Date().toISOString(),
   },
 ];
+
 
 export default function HealthcareReports() {
   const [reports, setReports] = useState<HealthcareReport[]>(
