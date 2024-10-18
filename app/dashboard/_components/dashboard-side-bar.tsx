@@ -13,7 +13,6 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getIdentity, initAuthClient } from "../../../utils/icpAuthClient"; // Adjust the path as needed
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import router from "next/router";
 
@@ -70,9 +69,39 @@ export default function DashboardSideBar() {
               pathname={pathname}
             />
             <NavItem
+              href="/dashboard/social-media"
+              icon={<FileText className="h-4 w-4" />}
+              label="Social Media"
+              pathname={pathname}
+            />
+            <NavItem
+              href="/dashboard/ecommerce"
+              icon={<FileText className="h-4 w-4" />}
+              label="Ecommerce"
+              pathname={pathname}
+            />
+            <NavItem
+              href="/dashboard/healthcare"
+              icon={<FileText className="h-4 w-4" />}
+              label="Healthcare"
+              pathname={pathname}
+            />
+            <NavItem
+              href="/dashboard/real-estate"
+              icon={<FileText className="h-4 w-4" />}
+              label="Real Estate"
+              pathname={pathname}
+            />
+            <NavItem
               href="/dashboard/reports"
               icon={<FileText className="h-4 w-4" />}
               label="Reports"
+              pathname={pathname}
+            />
+            <NavItem
+              href="/dashboard/constent"
+              icon={<FileText className="h-4 w-4" />}
+              label="Constent"
               pathname={pathname}
             />
             <Separator className="my-3" />

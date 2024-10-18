@@ -70,10 +70,58 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
+                <Link href="/dashboard/social-media">
+                  <Button variant="outline" className="w-full">
+                    <Folder className="mr-2 h-4 w-4" />
+                    Social Media
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
+                <Link href="/dashboard/ecommerce">
+                  <Button variant="outline" className="w-full">
+                    <Folder className="mr-2 h-4 w-4" />
+                    Ecommerce
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
+                <Link href="/dashboard/healthcare">
+                  <Button variant="outline" className="w-full">
+                    <Folder className="mr-2 h-4 w-4" />
+                    Healthcare
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
+                <Link href="/dashboard/real-estate">
+                  <Button variant="outline" className="w-full">
+                    <Folder className="mr-2 h-4 w-4" />
+                    Real estate
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
                 <Link href="/dashboard/finance">
                   <Button variant="outline" className="w-full">
                     <Banknote className="mr-2 h-4 w-4" />
                     Finance
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
+                <Link href="/dashboard/reports">
+                  <Button variant="outline" className="w-full">
+                    <Banknote className="mr-2 h-4 w-4" />
+                    Reports
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
+                <Link href="/dashboard/constent">
+                  <Button variant="outline" className="w-full">
+                    <Banknote className="mr-2 h-4 w-4" />
+                    Constent
                   </Button>
                 </Link>
               </DialogClose>
